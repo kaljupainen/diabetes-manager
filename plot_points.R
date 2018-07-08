@@ -1,0 +1,5 @@
+dm = read.csv("c:/tmp/medidas.csv",sep=",",head=TRUE)
+dm$DateTime <- as.POSIXct(dm$timestamp, format="%Y-%m-%dT%H:%M:%S")
+daterange=c(as.POSIXlt(min(dm$DateTime)), as.POSIXlt(max(dm$DateTime))) 
+plot(gluc ~ DateTime, dm, xaxt = "n")
+axis.POSIXct(1, at=seq(daterange[1], daterange[2], by="day"), format="%b %d")
